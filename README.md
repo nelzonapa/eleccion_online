@@ -6,14 +6,14 @@ Implementación de estilos de programación:
 
 ## **En resultado.js**
 
-1. Sliding Window: Implementado en la declaración del estado resultado (línea 6) utilizando el Hook useState, estableciendo su valor inicial como un array vacío.
+* Sliding Window: Implementado en la declaración del estado resultado (línea 6) utilizando el Hook useState, estableciendo su valor inicial como un array vacío.
 ```bash
     // Sliding Window (iniciando)
     const [resultado, setResultado] = useState([]);
     // Sliding Window (terminando)
 ```
 
-2. Quarantine: Aplicamos este estilo en la función getResultados (líneas 15 a 25) al usar try-catch para capturar posibles errores al obtener los resultados. Si ocurre un error, establecemos el estado resultado como un array vacío para evitar problemas en la representación de la tabla.
+* Quarantine: Aplicamos este estilo en la función getResultados (líneas 15 a 25) al usar try-catch para capturar posibles errores al obtener los resultados. Si ocurre un error, establecemos el estado resultado como un array vacío para evitar problemas en la representación de la tabla.
 
 ```bash
   // Quarantine (iniciando)
@@ -31,7 +31,7 @@ Implementación de estilos de programación:
   // Quarantine (terminando)
 ```
 
-3. Map Reduce:
+* Map Reduce:
 Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el método map para generar dinámicamente las filas de la tabla basándonos en los datos del array resultado.
 ```bash
     <tbody>
@@ -56,7 +56,7 @@ Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el métod
     </tbody>
 ```
 
-4. Cookbook: Lo aplicamos en el bloque de retorno, entre las líneas 29 y 70, al generar la estructura de la tabla y sus elementos siguiendo un patrón predefinido y común en este tipo de componentes.
+* Cookbook: Lo aplicamos en el bloque de retorno, entre las líneas 29 y 70, al generar la estructura de la tabla y sus elementos siguiendo un patrón predefinido y común en este tipo de componentes.
 
 ```bash
   return (
@@ -103,7 +103,7 @@ Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el métod
 
 ## **En ResultadoEleccion.js**
 
-1. RESTful: Este estilo se aplica en las funciones getResultados y getUserById. La implementación del estilo es en cómo las funciones están diseñadas para realizar operaciones de acceso a recursos a través de una API RESTful. La función getResultados realiza una solicitud HTTP GET a la ruta `/api/services/resultado`, mientras que getUserById realiza una solicitud HTTP GET a la ruta `/api/users/${id}`.
+* RESTful: Este estilo se aplica en las funciones getResultados y getUserById. La implementación del estilo es en cómo las funciones están diseñadas para realizar operaciones de acceso a recursos a través de una API RESTful. La función getResultados realiza una solicitud HTTP GET a la ruta `/api/services/resultado`, mientras que getUserById realiza una solicitud HTTP GET a la ruta `/api/users/${id}`.
 
 ```bash
 // RESTful (Inicia Aquí)
