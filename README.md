@@ -4,6 +4,8 @@
 
 Implementación de estilos de programación:
 
+## **En resultado.js**
+
 1. Sliding Window: Implementado en la declaración del estado resultado (línea 6) utilizando el Hook useState, estableciendo su valor inicial como un array vacío.
 ```
     // Sliding Window (iniciando)
@@ -96,3 +98,37 @@ Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el métod
     // Cookbook (terminando)
   );
 ```
+
+## **En ResultadoEleccion.js**
+
+1. RESTful: Este estilo se aplica en las funciones getResultados y getUserById. La implementación del estilo es en cómo las funciones están diseñadas para realizar operaciones de acceso a recursos a través de una API RESTful. La función getResultados realiza una solicitud HTTP GET a la ruta /api/services/resultado, mientras que getUserById realiza una solicitud HTTP GET a la ruta /api/users/${id}.
+
+```
+// RESTful (Inicia Aquí)
+import axios from 'axios';
+class ResultadoEleccion {
+    static async getResultados() {
+        try {
+            // RESTful (continuando)
+            const response = await axios.get('/api/services/resultado');
+            return response;
+        } catch (error) {
+            console.error('Error al obtener resultados base de datos:', error);
+            throw error;
+        }
+    }
+    static async getUserById(id) {
+        try {
+            // RESTful (continuando)
+            const response = await axios.get(`/api/users/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error(`Error al obtener el usuario con ID ${id}:`, error);
+            throw error;
+        }
+    }
+}
+
+export default ResultadoEleccion;
+```
+
