@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Verify from "@/ldavis/Componentes/Verify";
 
-export default function Layout({ children, pagina, time = 10 }) {
+export default function Layout({ children, pagina, time = 10 }) 
+{
   const router = useRouter();
   const [username, setUsername] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -16,13 +17,17 @@ export default function Layout({ children, pagina, time = 10 }) {
   }, []);
   // Go Forth (Termina Aquí)
 
-  const getProfile = async () => {
+  const getProfile = async () => 
+  {
     // Map-Reduce (Aquí inicia)
-    try {
+    try 
+    {
       // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
       const res = await axios.get("/api/profile");
       setUsername(res.data.username);
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       console.error("Error al obtener el perfil del usuario:", error);
       setUsername(0);
     }
@@ -34,7 +39,9 @@ export default function Layout({ children, pagina, time = 10 }) {
       // Hacemos una solicitud POST a la API para cerrar la sesión del usuario.
       const res = await axios.post("api/auth/logout");
       router.push("/"); // Redirigimos a la página de inicio después de cerrar sesión exitosamente.
-    } catch (err) {
+    } 
+    catch (err) 
+    {
       console.log(err);
       router.push("/"); // En caso de error, también redirigimos a la página de inicio.
     }

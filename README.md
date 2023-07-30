@@ -235,6 +235,25 @@ import ResultadoEleccion from "@/ldavis/Data/Repositorio/ResultadoEleccion";
   };
 
 ```
+* No se puso comentarios no necesarios
+* Consistent Indentation Estilo 2
+```bash
+  const getResultados = async () => 
+  {
+    try 
+    {
+      const res = await ResultadoEleccion.getResultados();
+      console.log(res.data);
+      setResultado(res.data[0]);
+    } catch (error) 
+    {
+      console.error("Error al obtener resultados de la base de datos:", error);
+      // Aquí aplicamos el Quarantine al encapsular el manejo del error.
+      setResultado([]);
+    }
+  };
+```
+
 ## **En ResultadoEleccion.js**
 
 * Comentarios descriptivos
@@ -248,6 +267,27 @@ class ResultadoEleccion {
 * Comandos con mensajes claros de entender.
 ```bash
 console.error("Error al obtener resultados de la base de datos:", error);
+```
+* No se puso comentarios no necesarios
+* Consistent Indentation Estilo 2
+```bash
+class ResultadoEleccion 
+{
+    // Obtiene todos los resultados de la elección
+    static async getResultados() 
+    {
+        try 
+        {
+            // RESTful (continuando)
+            const response = await axios.get('/api/services/resultado');
+            return response;
+        } 
+        catch (error) 
+        {
+            console.error('Error al obtener resultados base de datos:', error);
+            throw error;
+        }
+    }....
 ```
 
 ## **En Layout.js**
@@ -276,6 +316,27 @@ console.error("Error al obtener resultados de la base de datos:", error);
   };
 
 ```
+* No se puso comentarios no necesarios
+* Consistent Indentation Estilo 2
+```bash
+const getProfile = async () => 
+  {
+    // Map-Reduce (Aquí inicia)
+    try 
+    {
+      // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
+      const res = await axios.get("/api/profile");
+      setUsername(res.data.username);
+    } 
+    catch (error) 
+    {
+      console.error("Error al obtener el perfil del usuario:", error);
+      setUsername(0);
+    }
+    // Map-Reduce (Termina Aquí)
+  };
+```
+
 ## **En Verify.js**
 
 * Comentarios descriptivos
@@ -289,3 +350,4 @@ console.error("Error al obtener resultados de la base de datos:", error);
             className="modal-dialog"
         >
 ```
+* No se puso comentarios no necesarios
