@@ -11,7 +11,8 @@ Implementación de estilos de programación:
     // Sliding Window (iniciando)
     const [resultado, setResultado] = useState([]);
     // Sliding Window (terminando)
-```
+```bash
+
 2. Quarantine: Aplicamos este estilo en la función getResultados (líneas 15 a 25) al usar try-catch para capturar posibles errores al obtener los resultados. Si ocurre un error, establecemos el estado resultado como un array vacío para evitar problemas en la representación de la tabla.
 
 ```
@@ -28,7 +29,8 @@ Implementación de estilos de programación:
     }
   };
   // Quarantine (terminando)
-```
+```bash
+
 3. Map Reduce:
 Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el método map para generar dinámicamente las filas de la tabla basándonos en los datos del array resultado.
 ```
@@ -52,7 +54,7 @@ Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el métod
               // Map-Reduce (terminando)
             })} 
     </tbody>
-```
+```bash
 
 4. Cookbook: Lo aplicamos en el bloque de retorno, entre las líneas 29 y 70, al generar la estructura de la tabla y sus elementos siguiendo un patrón predefinido y común en este tipo de componentes.
 
@@ -97,7 +99,7 @@ Lo implementamos en el bloque de retorno, en la línea 44 , utilizando el métod
     </Layout>
     // Cookbook (terminando)
   );
-```
+```bash
 
 ## **En ResultadoEleccion.js**
 
@@ -130,5 +132,5 @@ class ResultadoEleccion {
 }
 
 export default ResultadoEleccion;
-```
+```bash
 
