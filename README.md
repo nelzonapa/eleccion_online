@@ -133,6 +133,7 @@ class ResultadoEleccion {
 
 export default ResultadoEleccion;
 ```
+## **En ResultadoEleccion.js**
 
 * Go Forth: He implementado este estilo utilizando el efecto de lado (useEffect). En la línea 12, el efecto está configurado para llamar a la función getProfile cuando el componente se monta (porque el arreglo de dependencias está vacío). De esta manera, el código avanza y ejecuta la obtención del perfil del usuario en el momento adecuado.
 
