@@ -10,6 +10,7 @@ export default function Layout({ children, pagina, time = 10 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Go Forth (Aquí inicia)
+  // Efecto secundario para obtener el perfil del usuario al montar el componente.
   useEffect(() => {
     getProfile();
   }, []);
@@ -18,6 +19,7 @@ export default function Layout({ children, pagina, time = 10 }) {
   const getProfile = async () => {
     // Map-Reduce (Aquí inicia)
     try {
+      // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
       const res = await axios.get("/api/profile");
       setUsername(res.data.username);
     } catch (error) {
@@ -29,11 +31,12 @@ export default function Layout({ children, pagina, time = 10 }) {
 
   const logout = async () => {
     try {
+      // Hacemos una solicitud POST a la API para cerrar la sesión del usuario.
       const res = await axios.post("api/auth/logout");
-      router.push("/");
+      router.push("/"); // Redirigimos a la página de inicio después de cerrar sesión exitosamente.
     } catch (err) {
       console.log(err);
-      router.push("/");
+      router.push("/"); // En caso de error, también redirigimos a la página de inicio.
     }
   };
 

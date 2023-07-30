@@ -215,7 +215,7 @@ import ResultadoEleccion from "@/ldavis/Data/Repositorio/ResultadoEleccion";
 ```
 
 * Comentarios para explicar bloques de código importantes:
-```
+```bash
   // useEffect para obtener los resultados al montar el componente
   useEffect(() => {
     getResultados();
@@ -238,7 +238,7 @@ import ResultadoEleccion from "@/ldavis/Data/Repositorio/ResultadoEleccion";
 ## **En ResultadoEleccion.js**
 
 * Comentarios descriptivos
-```
+```bash
 // Clase para manejar las operaciones relacionadas con los resultados de la elección
 class ResultadoEleccion {
     // Obtiene todos los resultados de la elección
@@ -246,29 +246,44 @@ class ResultadoEleccion {
         try {...
 ```
 * Comandos con mensajes claros de entender.
-```
+```bash
 console.error("Error al obtener resultados de la base de datos:", error);
 ```
 
 ## **En Layout.js**
 
-* l
-```
-```
-* l
-```
-```
-* l
-```
+* Comentarios descriptivos
+```bash
+  // Efecto secundario para obtener el perfil del usuario al montar el componente.
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  try {
+      // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
+      const res = await axios.get("/api/profile");
+      ....
+
+  const logout = async () => {
+    try {
+      // Hacemos una solicitud POST a la API para cerrar la sesión del usuario.
+      const res = await axios.post("api/auth/logout");
+      router.push("/"); // Redirigimos a la página de inicio después de cerrar sesión exitosamente.
+    } catch (err) {
+      console.log(err);
+      router.push("/"); // En caso de error, también redirigimos a la página de inicio.
+    }
+  };
+
 ```
 ## **En Verify.js**
 
 * l
-```
-```
-* l
-```
+```bash
 ```
 * l
+```bash
 ```
+* l
+```bash
 ```
