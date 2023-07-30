@@ -1,24 +1,27 @@
+// Uso de importaciones Claras y ordenadas
+import React, { useEffect, useState } from "react";
 import Layout from "@/ldavis/Componentes/Layout";
 import ResultadoEleccion from "@/ldavis/Data/Repositorio/ResultadoEleccion";
-import React, { useEffect, useState } from "react";
 
 export default function Resultado() {
   // Sliding Window (iniciando)
   const [resultado, setResultado] = useState([]);
   // Sliding Window (terminando)
 
+  // useEffect para obtener los resultados al montar el componente
   useEffect(() => {
     getResultados();
   }, []);
 
   // Quarantine (iniciando)
+  // Función getResultados  asincrónica para obtener resultados
   const getResultados = async () => {
     try {
       const res = await ResultadoEleccion.getResultados();
       console.log(res.data);
       setResultado(res.data[0]);
     } catch (error) {
-      console.error("Error al obtener resultados:", error);
+      console.error("Error al obtener resultados de la base de datos:", error);
       // Aquí aplicamos el Quarantine al encapsular el manejo del error.
       setResultado([]);
     }

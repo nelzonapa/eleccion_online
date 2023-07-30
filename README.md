@@ -133,7 +133,7 @@ class ResultadoEleccion {
 
 export default ResultadoEleccion;
 ```
-## **En ResultadoEleccion.js**
+## **En Layout.js**
 
 * Go Forth: He implementado este estilo utilizando el efecto de lado (useEffect). En la línea 12, el efecto está configurado para llamar a la función getProfile cuando el componente se monta (porque el arreglo de dependencias está vacío). De esta manera, el código avanza y ejecuta la obtención del perfil del usuario en el momento adecuado.
 
@@ -196,4 +196,79 @@ const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
         // Estilo 29: Actors (terminando)
     );
 };
+```
+
+# **LAB 10:  Prácticas de Codificación Legible**
+> Alumno: Nelzon Jorge Apaza Apaza
+> Curso Ingeniería de software
+
+Implementación de prácticas de codificación legible:
+
+## **En resultado.js**
+
+* Uso de importaciones Claras y ordenadas:
+```bash
+// Uso de importaciones Claras y ordenadas
+import React, { useEffect, useState } from "react";
+import Layout from "@/ldavis/Componentes/Layout";
+import ResultadoEleccion from "@/ldavis/Data/Repositorio/ResultadoEleccion";
+```
+
+* Comentarios para explicar bloques de código importantes:
+```
+  // useEffect para obtener los resultados al montar el componente
+  useEffect(() => {
+    getResultados();
+  }, []);
+
+  // Función getResultados  asincrónica para obtener resultados
+  const getResultados = async () => {
+    try {
+      const res = await ResultadoEleccion.getResultados();
+      console.log(res.data);
+      setResultado(res.data[0]);
+    } catch (error) {
+      console.error("Error al obtener resultados:", error);
+      // Aquí aplicamos el Quarantine al encapsular el manejo del error.
+      setResultado([]);
+    }
+  };
+
+```
+## **En ResultadoEleccion.js**
+
+* Comentarios descriptivos
+```
+// Clase para manejar las operaciones relacionadas con los resultados de la elección
+class ResultadoEleccion {
+    // Obtiene todos los resultados de la elección
+    static async getResultados() {
+        try {...
+```
+* Comandos con mensajes claros de entender.
+```
+console.error("Error al obtener resultados de la base de datos:", error);
+```
+
+## **En Layout.js**
+
+* l
+```
+```
+* l
+```
+```
+* l
+```
+```
+## **En Verify.js**
+
+* l
+```
+```
+* l
+```
+```
+* l
+```
 ```

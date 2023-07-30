@@ -1,6 +1,9 @@
 // RESTful (Inicia Aquí)
 import axios from 'axios';
+
+// Clase para manejar las operaciones relacionadas con los resultados de la elección
 class ResultadoEleccion {
+    // Obtiene todos los resultados de la elección
     static async getResultados() {
         try {
             // RESTful (continuando)
