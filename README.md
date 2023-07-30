@@ -161,3 +161,39 @@ export default ResultadoEleccion;
         // Map-Reduce (Termina Aquí)
     };
 ```
+
+## **En Verify.js**
+* Actors: Hemos aplicado este estilo en el componente Verify. El enfoque de estilo de actores involucra la comunicación y cooperación entre componentes independientes (actores) para lograr una tarea común. En este caso, el componente Verify es un actor que funciona de manera independiente y recibe mensajes (propiedades) desde otros componentes.
+
+```bash
+const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
+    return (
+        // Estilo 29: Actors (iniciando)
+        <Modal
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            contentLabel="Confirmación"
+            ariaHideApp={false}
+            className="modal-dialog"
+        >
+            <div className="modal-content container ">
+                <div className="modal-header">
+                    <h5 className="modal-title">{text}</h5>
+                    <button type="button" className="close" onClick={onRequestClose}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-primary" onClick={onConfirm}>
+                        Sí
+                    </button>
+                    <button type="button" className="btn btn-secondary" onClick={onRequestClose}>
+                        No
+                    </button>
+                </div>
+            </div>
+        </Modal>
+        // Estilo 29: Actors (terminando)
+    );
+};
+```

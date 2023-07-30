@@ -2,8 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Verify = ({ isOpen, onRequestClose, onConfirm,text }) => {
+const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
     return (
+        // Actors (Inicia Aquí)
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
@@ -28,6 +29,7 @@ const Verify = ({ isOpen, onRequestClose, onConfirm,text }) => {
                 </div>
             </div>
         </Modal>
+        // Actors (Termina Aquí)
     );
 };
 
