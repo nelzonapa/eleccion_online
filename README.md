@@ -134,3 +134,29 @@ class ResultadoEleccion {
 export default ResultadoEleccion;
 ```
 
+* Go Forth: He implementado este estilo utilizando el efecto de lado (useEffect). En la línea 12, el efecto está configurado para llamar a la función getProfile cuando el componente se monta (porque el arreglo de dependencias está vacío). De esta manera, el código avanza y ejecuta la obtención del perfil del usuario en el momento adecuado.
+
+```bash
+    // Go Forth (Aquí inicia)
+    useEffect(() => {
+        getProfile();
+    }, []);
+    // Go Forth (Termina Aquí)
+```
+
+
+* Map-Reduce: He aplicado este estilo dentro de la función getProfile. El bloque de código que realiza la solicitud HTTP utilizando Axios representa el enfoque Map-Reduce. Primero, intentamos obtener el perfil del usuario mediante una solicitud HTTP (Map), y luego, en caso de éxito, actualizamos el estado username con los datos obtenidos (Reduce).
+
+```bash
+    const getProfile = async () => {
+        // Map-Reduce (Aquí inicia)
+        try {
+            const res = await axios.get("/api/profile");
+            setUsername(res.data.username);
+        } catch (error) {
+            console.error("Error al obtener el perfil del usuario:", error);
+            setUsername(0);
+        }
+        // Map-Reduce (Termina Aquí)
+    };
+```
