@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
     return (
         // Actors (Inicia Aquí)
+        // Componente Modal para confirmar acciones
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}

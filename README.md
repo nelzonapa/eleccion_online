@@ -278,12 +278,14 @@ console.error("Error al obtener resultados de la base de datos:", error);
 ```
 ## **En Verify.js**
 
-* l
+* Comentarios descriptivos
 ```bash
-```
-* l
-```bash
-```
-* l
-```bash
+        // Componente Modal para confirmar acciones
+        <Modal
+            isOpen={isOpen}
+            onRequestClose={onRequestClose}
+            contentLabel="Confirmación"
+            ariaHideApp={false}
+            className="modal-dialog"
+        >
 ```
