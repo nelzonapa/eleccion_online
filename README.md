@@ -440,8 +440,70 @@ export default function Resultado() {
 
 ## **En ResultadoEleccion.js**
 
-* 
+* He separado las responsabilidades en dos clases diferentes: ResultadoService se encarga de obtener los resultados de la elección, y UserService se encarga de obtener información del usuario. Luego, la clase ResultadoEleccion utiliza estas dos clases para manejar las operaciones relacionadas con los resultados de la elección y la obtención de información del usuario.
+
+Con esta reestructuración, hemos aplicado el principio de Responsabilidad Única (SRP) al dividir las responsabilidades en clases diferentes y, como beneficio adicional, hemos mejorado la cohesión y la modularidad del código. Cada clase tiene una única responsabilidad y se puede modificar, extender o reutilizar de manera más sencilla. Además, si hay cambios en el manejo de resultados o usuarios, afectarán solo a sus respectivas clases sin afectar a las otras partes del código.
 
 ```js
+import ResultadoService from './resultadoService';
+import UserService from './userService';
+
+class ResultadoEleccion {
+  static async getResultados() {
+    return ResultadoService.getResultados();
+  }
+
+  static async getUserById(id) {
+    return UserService.getUserById(id);
+  }
+}
+
+export default ResultadoEleccion;
+
+```
+### creación de "resultadoService.js":
+```js
+import axios from 'axios';
+
+class ResultadoService {
+  static async getResultados() 
+  {
+    try 
+    {
+      const response = await axios.get('/api/services/resultado');
+      return response;
+    } 
+    catch (error) 
+    {
+      console.error('Error al obtener resultados de la base de datos:', error);
+      throw error;
+    }
+  }
+}
+
+export default ResultadoService;
+
+```
+### creación de "userService.js":
+```js
+import axios from 'axios';
+
+class UserService {
+  static async getUserById(id) 
+  {
+    try 
+    {
+      const response = await axios.get(`/api/users/${id}`);
+      return response.data;
+    } 
+    catch (error) 
+    {
+      console.error(`Error al obtener el usuario con ID ${id}:`, error);
+      throw error;
+    }
+  }
+}
+
+export default UserService;
 
 ```
