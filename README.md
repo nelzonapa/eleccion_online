@@ -507,3 +507,51 @@ class UserService {
 export default UserService;
 
 ```
+
+## **En ResultadoEleccion.js**  
+
+### creación de "profileService.js":
+
+* Aplicación del principio de Responsabilidad Única (SRP): La función getProfile se encargaba tanto de hacer una solicitud HTTP para obtener el perfil del usuario como de actualizar el estado del componente con el nombre de usuario. Para separar estas responsabilidades, realicé una nueva clase ProfileService que maneje la obtención del perfil del usuario.
+```js
+import axios from "axios";
+
+class ProfileService {
+  static async getProfile() {
+    try 
+    {
+      // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
+      const res = await axios.get("/api/profile");
+      return res.data.username;
+    } catch (error) {
+      console.error("Error al obtener el perfil del usuario:", error);
+      return 0;
+    }
+  }
+}
+
+export default ProfileService;
+
+```
+
+### creación de "httpService.js":
+
+* Aplicación del principio de Inversión de Dependencias (DIP): En el código anterior, el componente Layout dependía directamente de axios para hacer las solicitudes HTTP. Para aplicar el principio de Inversión de Dependencias, realicé una abstracción en forma de una interfaz HttpService que definirá los métodos de solicitud.
+
+```js
+import axios from "axios";
+
+class HttpService {
+  static async get(url) {
+    return await axios.get(url);
+  }
+
+  static async post(url) {
+    return await axios.post(url);
+  }
+}
+
+export default HttpService;
+
+```
+He aplicado los principios SOLID de Responsabilidad Única (SRP) e Inversión de Dependencias (DIP) al código. La clase ProfileService se encarga exclusivamente de obtener el perfil del usuario, mientras que la clase HttpService proporciona una abstracción para realizar solicitudes HTTP. Esto mejora la cohesión y la modularidad del código y facilita su extensión y mantenimiento en el futuro.

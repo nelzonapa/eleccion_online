@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Verify from "@/ldavis/Componentes/Verify";
+import ProfileService from "./profileService";
+import HttpService from "./httpService";
 
 export default function Layout({ children, pagina, time = 10 }) 
 {
@@ -13,31 +14,20 @@ export default function Layout({ children, pagina, time = 10 })
   // Go Forth (Aquí inicia)
   // Efecto secundario para obtener el perfil del usuario al montar el componente.
   useEffect(() => {
-    getProfile();
+    loadProfile();
   }, []);
   // Go Forth (Termina Aquí)
 
-  const getProfile = async () => 
-  {
-    // Map-Reduce (Aquí inicia)
-    try 
-    {
-      // Hacemos una solicitud GET a la API para obtener el perfil del usuario.
-      const res = await axios.get("/api/profile");
-      setUsername(res.data.username);
-    } 
-    catch (error) 
-    {
-      console.error("Error al obtener el perfil del usuario:", error);
-      setUsername(0);
-    }
-    // Map-Reduce (Termina Aquí)
+  const loadProfile = async () => {
+    // Obtenemos el perfil del usuario utilizando ProfileService
+    const username = await ProfileService.getProfile();
+    setUsername(username);
   };
 
   const logout = async () => {
     try {
       // Hacemos una solicitud POST a la API para cerrar la sesión del usuario.
-      const res = await axios.post("api/auth/logout");
+      const res = await HttpService.post("api/auth/logout"); // Utilizamos HttpService en lugar de axios
       router.push("/"); // Redirigimos a la página de inicio después de cerrar sesión exitosamente.
     } 
     catch (err) 
