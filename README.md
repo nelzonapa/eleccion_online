@@ -204,7 +204,7 @@ const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
 };
 ```
 
-# **------------------------------- LAB 10:  Prácticas de Codificación Legible -------------------------------****
+# **------------------------------- LAB 10:  Prácticas de Codificación Legible -------------------------------**
 > Alumno: Nelzon Jorge Apaza Apaza
 > Curso Ingeniería de software
 
@@ -485,6 +485,7 @@ export default ResultadoService;
 
 ```
 ### creación de "userService.js":
+
 ```js
 import axios from 'axios';
 
@@ -555,3 +556,72 @@ export default HttpService;
 
 ```
 He aplicado los principios SOLID de Responsabilidad Única (SRP) e Inversión de Dependencias (DIP) al código. La clase ProfileService se encarga exclusivamente de obtener el perfil del usuario, mientras que la clase HttpService proporciona una abstracción para realizar solicitudes HTTP. Esto mejora la cohesión y la modularidad del código y facilita su extensión y mantenimiento en el futuro.
+
+## **En Verify.js**  
+
+* Principio de Responsabilidad Única (SRP): En el código anterior, el componente Verify tiene la responsabilidad tanto de la presentación (mostrar el modal) como de la lógica de confirmación (manejar la acción cuando se confirma). Dividí estas responsabilidades en dos componentes diferentes: VerifyModal para la presentación y ConfirmDialog para la lógica de confirmación.
+
+### creación de "confirmDialog.js":
+
+```js
+import React from 'react';
+
+const ConfirmDialog = ({ onConfirm, onCancel, text }) => {
+  return (
+    <div>
+      <h5>{text}</h5>
+      <button onClick={onConfirm}>Sí</button>
+      <button onClick={onCancel}>No</button>
+    </div>
+  );
+};
+
+export default ConfirmDialog;
+
+```
+
+### creación de "verifyModal.js":
+
+```js
+import React from 'react';
+import Modal from 'react-modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const VerifyModal = ({ isOpen, onRequestClose, children }) => {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Confirmación"
+      ariaHideApp={false}
+      className="modal-dialog"
+    >
+      <div className="modal-content container">
+        {children}
+      </div>
+    </Modal>
+  );
+};
+
+export default VerifyModal;
+
+```
+
+### **En Verify.js** 
+* Ahora, el componente Verify se compone de VerifyModal y ConfirmDialog, lo que nos permite separar la presentación del modal y la lógica de confirmación en componentes diferentes. Esto mejora la cohesión y la modularidad del código y facilita la comprensión y el mantenimiento en el futuro. Además, también facilita la reutilización de estos componentes en otros lugares de la aplicación, lo que fomenta la eficiencia del desarrollo.
+```js
+import React, { useState } from 'react';
+import VerifyModal from './VerifyModal';
+import ConfirmDialog from './ConfirmDialog';
+
+const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
+  return (
+    <VerifyModal isOpen={isOpen} onRequestClose={onRequestClose}>
+      <ConfirmDialog onConfirm={onConfirm} onCancel={onRequestClose} text={text} />
+    </VerifyModal>
+  );
+};
+
+export default Verify;
+
+```

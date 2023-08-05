@@ -1,37 +1,13 @@
-import React from 'react';
-import Modal from 'react-modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import VerifyModal from './verifyModal';
+import ConfirmDialog from './confirmDialog';
 
 const Verify = ({ isOpen, onRequestClose, onConfirm, text }) => {
-    return (
-        // Actors (Inicia Aquí)
-        // Componente Modal para confirmar acciones
-        <Modal
-            isOpen={isOpen}
-            onRequestClose={onRequestClose}
-            contentLabel="Confirmación"
-            ariaHideApp={false}
-            className="modal-dialog"
-        >
-            <div className="modal-content container ">
-                <div className="modal-header">
-                    <h5 className="modal-title">{text}</h5>
-                    <button type="button" className="close" onClick={onRequestClose}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-primary" onClick={onConfirm}>
-                        Sí
-                    </button>
-                    <button type="button" className="btn btn-secondary" onClick={onRequestClose}>
-                        No
-                    </button>
-                </div>
-            </div>
-        </Modal>
-        // Actors (Termina Aquí)
-    );
+  return (
+    <VerifyModal isOpen={isOpen} onRequestClose={onRequestClose}>
+      <ConfirmDialog onConfirm={onConfirm} onCancel={onRequestClose} text={text} />
+    </VerifyModal>
+  );
 };
 
 export default Verify;
